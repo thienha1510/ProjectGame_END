@@ -5932,6 +5932,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weapon: {fileID: 399110830}
+  playerController: {fileID: 1600115558}
+  playerAnimator: {fileID: 1600115553}
+  playerSpriteRenderer: {fileID: 1600115551}
+  weaponSpriteRenderer: {fileID: 399110831}
 --- !u!1001 &375168477
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10527,13 +10531,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 399110829}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: -0, z: 0.3944233, w: -0.91892886}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 367449933}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 313.54}
 --- !u!212 &399110831
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -29662,6 +29666,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 3
+  spriteRenderer: {fileID: 1600115551}
+  rigidbody2D: {fileID: 1600115556}
+  playerInput: {fileID: 1600115559}
 --- !u!114 &1600115559
 MonoBehaviour:
   m_ObjectHideFlags: 0
