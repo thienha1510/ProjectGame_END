@@ -17,7 +17,7 @@ public class GameManager : MonoBehaviour
     public viewportState currentViewport;
     private void Awake()
     {
-        InvokeRepeating("spawnEnemy", 0, 0.5f);
+        InvokeRepeating("spawnEnemy", 0, 3f);
     }
     public void spawnEnemy()
     {
