@@ -8,6 +8,10 @@ public class PlayerController : MonoBehaviour
     //Player settings
     [SerializeField] float moveSpeed;
     [SerializeField] public SpriteRenderer spriteRenderer;
+    [SerializeField]
+    [Tooltip("Health")]
+    private int health = 100;
+    private int maxHealth = 100;
     bool isAlive;
     [SerializeField] Rigidbody2D rigidbody2D;
     [SerializeField] Animator animator;
