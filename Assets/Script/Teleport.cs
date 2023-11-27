@@ -26,7 +26,8 @@ public class Teleport : MonoBehaviour
             nextSceneIndex = 0;
         }
 
-        FindObjectOfType<ScenePersist>().ResetScenePersist();
+        //FindObjectOfType<ScenePersist>().ResetScenePersist();
+        Debug.Log(FindObjectOfType<ScenePersist>());
         SceneManager.LoadScene(nextSceneIndex);
     }
 }
