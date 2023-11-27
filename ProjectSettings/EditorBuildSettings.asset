@@ -11,5 +11,14 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Village.unity
     guid: 324c36f48c4b9924cb2a36a3370a5356
+  - enabled: 1
+    path: Assets/Scenes/Castle.unity
+    guid: eae57072e06b3804786f44dbd8a5f7ca
+  - enabled: 1
+    path: Assets/Scenes/Castle_2.unity
+    guid: 6324117ba4e584a46bbeb99e34e6a23a
+  - enabled: 1
+    path: Assets/Scenes/Castle_Boss.unity
+    guid: dd32e1c322cb4d84f89fe0ca3978e0f3
   m_configObjects: {}
   m_UseUCBPForAssetBundles: 0
