@@ -29690,6 +29690,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 3
   spriteRenderer: {fileID: 1600115551}
+  health: 100
   rigidbody2D: {fileID: 1600115556}
   animator: {fileID: 0}
   playerInput: {fileID: 1600115559}
@@ -34553,6 +34554,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: PF Props Stair M
+      objectReference: {fileID: 0}
+    - target: {fileID: 6295016638095607784, guid: 78e9efbdf9b33994da8dfbe530f65e5e,
+        type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
