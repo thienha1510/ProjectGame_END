@@ -10,14 +10,13 @@ public class HandController : MonoBehaviour
     Vector3 direction;
     [SerializeField] PlayerController playerController;
     [SerializeField] Animator playerAnimator;
-<<<<<<< Updated upstream
-=======
+
     [SerializeField] SpriteRenderer playerSpriteRenderer;
     [SerializeField] SpriteRenderer weaponSpriteRenderer;
     [SerializeField] GameObject bullet;
     [SerializeField] Transform firePos;
     //  [SerializeField] Transform firePos;
->>>>>>> Stashed changes
+
     // Start is called before the first frame update
     private void Awake()
     {
@@ -42,34 +41,30 @@ public class HandController : MonoBehaviour
         direction = (mousePosition - weapon.transform.position).normalized;
 
         float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-<<<<<<< Updated upstream
+
         //weapon.transform.eulerAngles = new Vector3(0, 0, angle);
 
-      
-            if(playerController.GetComponent<Rigidbody2D>().velocity.x >= 0)
-=======
-       // firePos.transform.position = weapon.transform.position;
-        weapon.transform.eulerAngles = new Vector3(0, 0, angle);
-        
+
+        if (playerController.GetComponent<Rigidbody2D>().velocity.x >= 0)
+
+            // firePos.transform.position = weapon.transform.position;
+            weapon.transform.eulerAngles = new Vector3(0, 0, angle);
+
         // Debug.Log(angle);
         //Right
         if ((angle > -45 && angle < 0) || (angle < 45 && angle > 0))
         {
-            PlayerController.ResetMovingBool();
+            //PlayerController.ResetMovingBool();
             if (PlayerController.moveInput.x == 0)
->>>>>>> Stashed changes
             {
-                if(angle > 90 && angle <180)
+                if (angle > 90 && angle < 180)
                 {
                     weapon.transform.eulerAngles = new Vector3(0, 0, angle);
                 }
             }
-<<<<<<< Updated upstream
-  
-=======
             else
             {
-                PlayerController.playerHasHorizontalSpeed = true;
+                //PlayerController.playerHasHorizontalSpeed = true;
             }
             playerSpriteRenderer.flipX = false;
             weaponSpriteRenderer.flipY = false;
@@ -77,7 +72,7 @@ public class HandController : MonoBehaviour
         //Left
         if ((angle > -225 && angle < -135) || (angle < 225 && angle > 135))
         {
-            PlayerController.ResetMovingBool();
+            //PlayerController.ResetMovingBool();
             if (PlayerController.moveInput.x == 0)
             {
                 PlayerController.playerHasHorizontalIdle = true;
@@ -92,7 +87,7 @@ public class HandController : MonoBehaviour
         //Up
         if (angle < 135 && angle > 45)
         {
-            PlayerController.ResetMovingBool();
+            //PlayerController.ResetMovingBool();
             if (PlayerController.moveInput.y == 0)
             {
                 PlayerController.playerHasVerticalIdle_Up = true;
@@ -102,13 +97,13 @@ public class HandController : MonoBehaviour
 
                 PlayerController.playerHasVerticalSpeed_Up = true;
             }
-            
-          
+
+
         }
         //Down
         if (angle > -135 && angle < -45)
         {
-            PlayerController.ResetMovingBool();
+            //PlayerController.ResetMovingBool();
             if (PlayerController.moveInput.y == 0)
             {
                 PlayerController.playerHasVerticalIdle_Down = true;
@@ -118,7 +113,7 @@ public class HandController : MonoBehaviour
                 PlayerController.playerHasVerticalSpeed_Down = true;
 
             }
-         
+
         }
     }
     void Shoot()
@@ -135,6 +130,5 @@ public class HandController : MonoBehaviour
             GameObject test = Instantiate(bullet, firePos.position, firePos.rotation);
 
         }
->>>>>>> Stashed changes
     }
 }

@@ -13,23 +13,28 @@ public class PlayerController : MonoBehaviour
     [SerializeField] Animator animator;
     CapsuleCollider2D capsuleCollider2D;
     //Moving
-    static bool playerHasHorizontalIdle = false;
+    /*static bool playerHasHorizontalIdle = false;
     static bool playerHasHorizontalSpeed = false;
     static bool playerHasVerticalSpeed_Up = false;
     static bool playerHasVerticalSpeed_Down = false;
     static bool playerHasVerticalIdle_Up = false;
-    static bool playerHasVerticalIdle_Down = false;
+    static bool playerHasVerticalIdle_Down = false;*/
+    public static bool playerHasHorizontalIdle = false;
+    public static bool playerHasHorizontalSpeed = false;
+    public static bool playerHasVerticalSpeed_Up = false;
+    public static bool playerHasVerticalSpeed_Down = false;
+    public static bool playerHasVerticalIdle_Up = false;
+    public static bool playerHasVerticalIdle_Down = false;
 
     //
-    [SerializeField]PlayerInput playerInput;
-<<<<<<< Updated upstream
-    Vector2 moveInput;
-=======
+    [SerializeField] PlayerInput playerInput;
+    //Vector2 moveInput;
+
     public static Vector2 moveInput;
-   
+
     Vector3 mousePosition;
     Vector3 direction;
->>>>>>> Stashed changes
+
     private void Awake()
     {
         rigidbody2D = GetComponent<Rigidbody2D>();
@@ -45,25 +50,25 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(isAlive == false)
+        if (isAlive == false)
         {
             return;
         }
         Run();
-<<<<<<< Updated upstream
+
         FlipSprite();
-=======
-        
-      //  FlipSprite();
->>>>>>> Stashed changes
+
+
+        //  FlipSprite();
+
     }
     void OnMove(InputValue value)
     {
-        if(isAlive ==  false)
+        if (isAlive == false)
         {
             return;
         }
-        
+
         moveInput = value.Get<Vector2>();
     }
     void ResetMovingBool()
@@ -79,26 +84,26 @@ public class PlayerController : MonoBehaviour
     }
     void Run()
     {
-        
+
         Vector2 playerVelocity = new Vector2(moveInput.x * moveSpeed, moveInput.y * moveSpeed);
         rigidbody2D.velocity = playerVelocity;
-<<<<<<< Updated upstream
+
         playerHasHorizontalSpeed = Mathf.Abs(rigidbody2D.velocity.x) > Mathf.Epsilon;
         playerHasVerticalSpeed_Up = moveInput.y > 0;
         playerHasVerticalSpeed_Down = moveInput.y < 0;
 
         /////Run Animations
         if (moveInput.x == 0 && moveInput.y == 0)
-=======
 
-        /////Run Animations
 
-        //Horizontal
-        if (playerHasHorizontalSpeed == true && (playerHasVerticalSpeed_Up == false && (playerHasVerticalSpeed_Up == false)))
->>>>>>> Stashed changes
-        {
-            ResetMovingBool();
-        }
+            /////Run Animations
+
+            //Horizontal
+            if (playerHasHorizontalSpeed == true && (playerHasVerticalSpeed_Up == false && (playerHasVerticalSpeed_Up == false)))
+
+            {
+                ResetMovingBool();
+            }
         //Horizon
         if (playerHasHorizontalSpeed == true)
         {
@@ -106,7 +111,7 @@ public class PlayerController : MonoBehaviour
             animator.SetBool("HMoving", playerHasHorizontalSpeed);
             playerHasHorizontalIdle = true;
         }
-        else 
+        else
         {
             if (playerHasHorizontalIdle == true)
             {
@@ -115,99 +120,101 @@ public class PlayerController : MonoBehaviour
                 playerHasHorizontalIdle = false;
             }
         }
-<<<<<<< Updated upstream
+
         //Vertical_Up
         if (playerHasVerticalSpeed_Up == true || (playerHasVerticalSpeed_Up == true && playerHasHorizontalSpeed == true))
         {
             ResetMovingBool();
             // animator.SetBool("HMoving", false);
-=======
-        
-        //Vertical_Up
-        if (playerHasVerticalSpeed_Up == true || (playerHasVerticalSpeed_Up == true && playerHasHorizontalSpeed == true))
-        {
-            ResetMovingBool_Anim();
->>>>>>> Stashed changes
-            animator.SetBool("VMoving_Up", playerHasVerticalSpeed_Up);
-            playerHasVerticalIdle_Up = true;
 
-        }
-<<<<<<< Updated upstream
-        else
-        {
-            if (playerHasVerticalIdle_Up == true)
+
+            //Vertical_Up
+            if (playerHasVerticalSpeed_Up == true || (playerHasVerticalSpeed_Up == true && playerHasHorizontalSpeed == true))
+            {
+                //ResetMovingBool_Anim();
+
+                animator.SetBool("VMoving_Up", playerHasVerticalSpeed_Up);
+                playerHasVerticalIdle_Up = true;
+
+            }
+
+            else
+            {
+                if (playerHasVerticalIdle_Up == true)
+                {
+                    ResetMovingBool();
+                    animator.SetBool("VIdle_Up", true);
+                    playerHasVerticalIdle_Up = false;
+                }
+            }
+            //Vertical_Down
+            if (playerHasVerticalSpeed_Down == true || (playerHasVerticalSpeed_Down == true && playerHasHorizontalSpeed == true))
             {
                 ResetMovingBool();
-                animator.SetBool("VIdle_Up", true);
-                playerHasVerticalIdle_Up = false;
-            }
-        }
-        //Vertical_Down
-        if (playerHasVerticalSpeed_Down == true || (playerHasVerticalSpeed_Down == true && playerHasHorizontalSpeed == true))
-        {
-            ResetMovingBool();
-           // animator.SetBool("HMoving", false);
-=======
-        if (playerHasVerticalIdle_Up == true && moveInput.y == 0)
-            {
-                ResetMovingBool_Anim();
-                animator.SetBool("VIdle_Up", true);
-                playerHasVerticalIdle_Up = false;
-            }
-        
-        //Vertical_Down
-        if (playerHasVerticalSpeed_Down == true || (playerHasVerticalSpeed_Down == true && playerHasHorizontalSpeed == true))
-        {
-            ResetMovingBool_Anim();
->>>>>>> Stashed changes
-            animator.SetBool("VMoving_Down", playerHasVerticalSpeed_Down);
-            playerHasVerticalIdle_Down = true;
+                // animator.SetBool("HMoving", false);
 
-        }
-<<<<<<< Updated upstream
-        else
-        {
-            if (playerHasVerticalIdle_Down == true)
-            {
-                ResetMovingBool();
-                animator.SetBool("VIdle_Down", true);
-                playerHasVerticalIdle_Down = false;
-            }
-        }
-       
-=======
-        if (playerHasVerticalIdle_Down == true && moveInput.y == 0)
-            {
-                ResetMovingBool_Anim();
-                animator.SetBool("VIdle_Down", true);
-                playerHasVerticalIdle_Down = false;
-            }
-        
+                if (playerHasVerticalIdle_Up == true && moveInput.y == 0)
+                {
+                    //ResetMovingBool_Anim();
+                    animator.SetBool("VIdle_Up", true);
+                    playerHasVerticalIdle_Up = false;
+                }
 
->>>>>>> Stashed changes
+                //Vertical_Down
+                if (playerHasVerticalSpeed_Down == true || (playerHasVerticalSpeed_Down == true && playerHasHorizontalSpeed == true))
+                {
+                    //ResetMovingBool_Anim();
 
-     
+                    animator.SetBool("VMoving_Down", playerHasVerticalSpeed_Down);
+                    playerHasVerticalIdle_Down = true;
+
+                }
+
+                else
+                {
+                    if (playerHasVerticalIdle_Down == true)
+                    {
+                        ResetMovingBool();
+                        animator.SetBool("VIdle_Down", true);
+                        playerHasVerticalIdle_Down = false;
+                    }
+                }
+
+
+                if (playerHasVerticalIdle_Down == true && moveInput.y == 0)
+                {
+                    //ResetMovingBool_Anim();
+                    animator.SetBool("VIdle_Down", true);
+                    playerHasVerticalIdle_Down = false;
+                }
+
+
+
+
+            }
+            //void Shoot()
+            //{
+            //    mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            //    mousePosition.z = 0;
+            //    direction = (mousePosition - firePos.transform.position).normalized;
+
+            //    float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+            //   // firePos.transform.eulerAngles = new Vector3(0, 0, angle);
+            //    // direction = 
+            //    if (Input.GetMouseButtonDown(0))
+            //    {
+            //        GameObject test = Instantiate(bullet, firePos.position, firePos.rotation);
+
+            //    }
+            //}
+   
+        }
     }
-    //void Shoot()
-    //{
-    //    mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-    //    mousePosition.z = 0;
-    //    direction = (mousePosition - firePos.transform.position).normalized;
-
-    //    float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-    //   // firePos.transform.eulerAngles = new Vector3(0, 0, angle);
-    //    // direction = 
-    //    if (Input.GetMouseButtonDown(0))
-    //    {
-    //        GameObject test = Instantiate(bullet, firePos.position, firePos.rotation);
-
-    //    }
-    //}
     void FlipSprite()
     {
         playerHasHorizontalSpeed = Mathf.Abs(rigidbody2D.velocity.x) > Mathf.Epsilon;
 
-        
+
         if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
         {
             spriteRenderer.flipX = true;
@@ -224,7 +231,5 @@ public class PlayerController : MonoBehaviour
         {
             spriteRenderer.flipY = false;
         }
-
-
     }
 }
