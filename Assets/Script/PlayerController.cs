@@ -22,7 +22,14 @@ public class PlayerController : MonoBehaviour
 
     //
     [SerializeField]PlayerInput playerInput;
+<<<<<<< Updated upstream
     Vector2 moveInput;
+=======
+    public static Vector2 moveInput;
+   
+    Vector3 mousePosition;
+    Vector3 direction;
+>>>>>>> Stashed changes
     private void Awake()
     {
         rigidbody2D = GetComponent<Rigidbody2D>();
@@ -43,7 +50,12 @@ public class PlayerController : MonoBehaviour
             return;
         }
         Run();
+<<<<<<< Updated upstream
         FlipSprite();
+=======
+        
+      //  FlipSprite();
+>>>>>>> Stashed changes
     }
     void OnMove(InputValue value)
     {
@@ -70,12 +82,20 @@ public class PlayerController : MonoBehaviour
         
         Vector2 playerVelocity = new Vector2(moveInput.x * moveSpeed, moveInput.y * moveSpeed);
         rigidbody2D.velocity = playerVelocity;
+<<<<<<< Updated upstream
         playerHasHorizontalSpeed = Mathf.Abs(rigidbody2D.velocity.x) > Mathf.Epsilon;
         playerHasVerticalSpeed_Up = moveInput.y > 0;
         playerHasVerticalSpeed_Down = moveInput.y < 0;
 
         /////Run Animations
         if (moveInput.x == 0 && moveInput.y == 0)
+=======
+
+        /////Run Animations
+
+        //Horizontal
+        if (playerHasHorizontalSpeed == true && (playerHasVerticalSpeed_Up == false && (playerHasVerticalSpeed_Up == false)))
+>>>>>>> Stashed changes
         {
             ResetMovingBool();
         }
@@ -95,15 +115,24 @@ public class PlayerController : MonoBehaviour
                 playerHasHorizontalIdle = false;
             }
         }
+<<<<<<< Updated upstream
         //Vertical_Up
         if (playerHasVerticalSpeed_Up == true || (playerHasVerticalSpeed_Up == true && playerHasHorizontalSpeed == true))
         {
             ResetMovingBool();
             // animator.SetBool("HMoving", false);
+=======
+        
+        //Vertical_Up
+        if (playerHasVerticalSpeed_Up == true || (playerHasVerticalSpeed_Up == true && playerHasHorizontalSpeed == true))
+        {
+            ResetMovingBool_Anim();
+>>>>>>> Stashed changes
             animator.SetBool("VMoving_Up", playerHasVerticalSpeed_Up);
             playerHasVerticalIdle_Up = true;
 
         }
+<<<<<<< Updated upstream
         else
         {
             if (playerHasVerticalIdle_Up == true)
@@ -118,10 +147,24 @@ public class PlayerController : MonoBehaviour
         {
             ResetMovingBool();
            // animator.SetBool("HMoving", false);
+=======
+        if (playerHasVerticalIdle_Up == true && moveInput.y == 0)
+            {
+                ResetMovingBool_Anim();
+                animator.SetBool("VIdle_Up", true);
+                playerHasVerticalIdle_Up = false;
+            }
+        
+        //Vertical_Down
+        if (playerHasVerticalSpeed_Down == true || (playerHasVerticalSpeed_Down == true && playerHasHorizontalSpeed == true))
+        {
+            ResetMovingBool_Anim();
+>>>>>>> Stashed changes
             animator.SetBool("VMoving_Down", playerHasVerticalSpeed_Down);
             playerHasVerticalIdle_Down = true;
 
         }
+<<<<<<< Updated upstream
         else
         {
             if (playerHasVerticalIdle_Down == true)
@@ -132,9 +175,34 @@ public class PlayerController : MonoBehaviour
             }
         }
        
+=======
+        if (playerHasVerticalIdle_Down == true && moveInput.y == 0)
+            {
+                ResetMovingBool_Anim();
+                animator.SetBool("VIdle_Down", true);
+                playerHasVerticalIdle_Down = false;
+            }
+        
+
+>>>>>>> Stashed changes
 
      
     }
+    //void Shoot()
+    //{
+    //    mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+    //    mousePosition.z = 0;
+    //    direction = (mousePosition - firePos.transform.position).normalized;
+
+    //    float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+    //   // firePos.transform.eulerAngles = new Vector3(0, 0, angle);
+    //    // direction = 
+    //    if (Input.GetMouseButtonDown(0))
+    //    {
+    //        GameObject test = Instantiate(bullet, firePos.position, firePos.rotation);
+
+    //    }
+    //}
     void FlipSprite()
     {
         playerHasHorizontalSpeed = Mathf.Abs(rigidbody2D.velocity.x) > Mathf.Epsilon;
@@ -148,7 +216,15 @@ public class PlayerController : MonoBehaviour
         {
             spriteRenderer.flipX = false;
         }
-    
-    
+        if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow))
+        {
+            spriteRenderer.flipY = true;
+        }
+        if (Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow))
+        {
+            spriteRenderer.flipY = false;
+        }
+
+
     }
 }
