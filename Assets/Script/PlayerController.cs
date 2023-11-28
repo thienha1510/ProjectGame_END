@@ -178,6 +178,7 @@ public class PlayerController : MonoBehaviour
 
     //    }
     //}
+
     void FlipSprite()
     {
         playerHasHorizontalSpeed = Mathf.Abs(rigidbody2D.velocity.x) > Mathf.Epsilon;
